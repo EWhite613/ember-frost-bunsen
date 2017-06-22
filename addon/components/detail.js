@@ -622,7 +622,7 @@ export default Component.extend(SpreadMixin, HookMixin, PropTypeMixin, {
 
     const reduxStore = this.get('reduxStore')
     const reduxStoreValue = reduxStore.getState().value
-    const value = this.get('value')
+    const value = _.cloneDeep(this.get('value'))
     const plainObjectValue = isEmberObject(value) ? deemberify(value) : value
     const hasUserProvidedValue = [null, undefined].indexOf(plainObjectValue) === -1
     const isReduxStoreValueEmpty = [null, undefined].indexOf(reduxStoreValue) !== -1
